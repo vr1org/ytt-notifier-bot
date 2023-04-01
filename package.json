@@ -1,0 +1,30 @@
+{
+  "name": "ytt-notifier-bot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/vr1org/ytt-notifier-bot.git"
+  },
+  "keywords": [
+    "yadro",
+    "tabletennis",
+    "telegram",
+    "bot"
+  ],
+  "author": "Vladimir Repin",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/vr1org/ytt-notifier-bot/issues"
+  },
+  "homepage": "https://github.com/vr1org/ytt-notifier-bot#readme",
+  "devDependencies": {
+    "@types/node": "^18.15.11",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.0.3"
+  }
+}

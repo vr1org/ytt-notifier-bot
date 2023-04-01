@@ -1,0 +1,17 @@
+{
+    "typescript.tsdk": "./node_modules/typescript/lib",
+    "editor.detectIndentation": false,
+    "editor.tabSize": 2,
+    "files.eol": "\n",
+    "files.autoSave": "off",
+    "files.exclude": {      
+      ".nycrc": true,
+      "**/.git": true,
+      "node_modules": true,
+      "**/.nyc_output": true,
+      "build": true,
+      "dist": true,
+      "**/coverage": true,
+      "package-lock.json": true
+    }
+  }
