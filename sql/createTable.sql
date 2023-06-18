@@ -3,8 +3,29 @@ GO
 
 USE yttNotifier; -- yttNotifierTest
 GO 
+-- человек участник
+CREATE TABLE participant (
+  id INT IDENTITY NOT NULL,
+  name VARCHAR(1000) NOT NULL,
+  companyId VARCHAR(1000) NOT NULL, 
+  chatId INT NOT NULL,
+  telegramId VARCHAR(1000) NOT NULL,
+  adminApproved INT NOT NULL,
+  adminComment VARCHAR(1000),   
+  CONSTRAINT participantPK PRIMARY KEY (id)
+);
 
-CREATE TABLE section (
+-- и его глобальные настройки
+CREATE TABLE participantSettings (
+  participantId INT NOT NULL,
+  defaultNotification INT NOT NULL CHECK (defaultNotification > 2 AND defaultNotification < 48),
+  language CHAR(2) NOT NULL,
+  CONSTRAINT participantSettingsPK PRIMARY KEY (participantId),  
+  CONSTRAINT participantSettingsFK FOREIGN KEY (participantId) REFERENCES participant (id)
+);
+
+-- спортивный кружок / секция
+CREATE TABLE section ( 
 	id INT IDENTITY NOT NULL,
 	name VARCHAR(1000) NOT NULL,
 	adminTelegramId VARCHAR(1000) NOT NULL,
@@ -26,23 +47,7 @@ CREATE TABLE meeting (
   CONSTRAINT meetingSectionFK FOREIGN KEY (sectionId) REFERENCES section (id)
 );
 
-CREATE TABLE participant (
-  id INT IDENTITY NOT NULL,
-  name VARCHAR(1000) NOT NULL,
-  companyId VARCHAR(1000) NOT NULL, 
-  chatId INT NOT NULL,
-  telegramId VARCHAR(1000) NOT NULL,
-  adminComment VARCHAR(1000) NOT NULL,  
-  CONSTRAINT participantPK PRIMARY KEY (id)
-);
 
-CREATE TABLE participantSettings (
-  participantId INT NOT NULL,
-  defaultNotification INT NOT NULL CHECK (defaultNotification > 2 AND defaultNotification < 48),
-  language CHAR(2) NOT NULL,
-  CONSTRAINT participantSettingsPK PRIMARY KEY (participantId),  
-  CONSTRAINT participantSettingsFK FOREIGN KEY (participantId) REFERENCES participant (id)
-);
 
 CREATE TABLE participant2section (
   participantId INT NOT NULL,
